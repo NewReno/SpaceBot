@@ -10,7 +10,10 @@ def main():
     filename = output_dir / "hubble.jpeg"
     os.makedirs(output_dir, exist_ok=True)
     try:
-        response = requests.get(url)
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'
+        }
+        response = requests.get(url, headers=headers)
         response.raise_for_status()
 
         with open(filename, 'wb') as file:
